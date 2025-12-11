@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>לוביט | סוכנות הביטוח המובילה בישראל</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700;900&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            primary: '#2B2F3A', // Dark Text
+                            accent: '#E6242E',  //  Lubit Red
+                            bg: '#FFFFFF',      
+                            muted: '#E6E8EB',   
+                            body: '#1D2430'     
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Heebo', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .curve-decoration {
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+        }
+
+        .curve-decoration svg {
+            position: relative;
+            display: block;
+            width: calc(100% + 1.3px);
+            height: 40px;
+        }
+
+        .tab-active {
+            border-bottom: 3px solid #E6242E;
+            color: #2B2F3A;
+            font-weight: 700;
+        }
+
+        .tab-inactive {
+            color: #6B7280;
+            border-bottom: 3px solid transparent;
+        }
+
+        /* Sticky Bar Logic */
+        .sticky-bar {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(5px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+
+<body class="font-sans text-brand-body bg-white">
+
+    <nav class="sticky-bar border-b border-gray-100">
+        <div class="container mx-auto px-4 h-20 flex items-center justify-between">
+            <div class="flex items-center">
+                <h1 class="text-3xl font-black tracking-tighter text-brand-primary">
+                    <img src="./lubit-logo-black.svg" alt="Lubit Logo" class="w-30 h-16 object-contain">
+                </h1>
+            </div>
+
+            <div class="hidden md:flex gap-8 text-lg">
+                <button onclick="switchProduct('auto')" id="tab-auto"
+                    class="tab-active py-6 transition-colors">רכב</button>
+                <button onclick="switchProduct('home')" id="tab-home"
+                    class="tab-inactive py-6 hover:text-brand-primary transition-colors">דירה</button>
+                <button onclick="switchProduct('atv')" id="tab-atv"
+                    class="tab-inactive py-6 hover:text-brand-primary transition-colors">טרקטורונים</button>
+                <button onclick="switchProduct('travel')" id="tab-travel"
+                    class="tab-inactive py-6 hover:text-brand-primary transition-colors">נסיעות לחו"ל</button>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <div class="hidden lg:flex flex-col items-end text-sm leading-tight">
+                    <span class="font-bold text-brand-primary">077-1234567</span>
+                    <span class="text-green-500 flex items-center gap-1 text-xs">● זמינים בוואטסאפ</span>
+                </div>
+                <a href="#lead-form"
+                    class="bg-brand-accent text-white px-6 py-2.5 rounded-full font-bold shadow-lg hover:bg-red-700 transition transform hover:-translate-y-0.5">
+                    קבלו הצעה
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="relative bg-white pt-12 pb-32 overflow-hidden">
+        <img src="./lubit-logo-red-car-only.svg" class="object-contain w-1/5 h-auto opacity-90 m-auto pb-10"
+            alt="red car lines">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center gap-12">
+
+            <div class="w-full md:w-1/2 z-10 text-center md:text-right">
+                <h2 id="hero-title" class="text-4xl md:text-6xl font-black text-brand-primary mb-4 leading-tight">
+                    ביטוח רכב הוגן ומהיר <br /> <span class="text-brand-accent">עם שירות אנושי</span>
+                </h2>
+                <p id="hero-subtitle" class="text-xl text-gray-500 mb-8 font-light">
+                    קבלו הצעה אישית תוך דקות, בלי אותיות קטנות ובלי כאבי ראש.
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                    <a href="#lead-form"
+                        class="bg-brand-accent text-white text-xl px-10 py-4 rounded-full font-bold shadow-xl hover:shadow-2xl transition hover:bg-red-700">
+                        קבלו הצעה עכשיו
+                    </a>
+                    <a href="https://wa.me/972526317697"
+                        class="flex items-center justify-center gap-2 text-xl text-brand-primary font-bold px-10 py-2 border-2 border-brand-primary rounded-full hover:bg-gray-50 shadow-xl hover:shadow-2xl transition hover:bg-red-50">
+                        <img src="./whatsapp_logo.svg" alt="WhatsApp Logo" class="w-5 h-5" />
+                        נציג בוואטסאפ
+                    </a>
+                </div>
+            </div>
+
+            <div class="w-full md:w-1/2 relative">
+                <div
+                    class="bg-gray-100 rounded-3xl h-80 md:h-[500px] w-full flex items-center justify-center relative overflow-hidden shadow-inner">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-gray-50 to-white"></div>
+                    <img id="hero-img" src="./auto.png"
+                        class="object-cover w-full h-full mix-blend-multiply opacity-90" alt="Hero Image">
+                </div>
+            </div>
+        </div>
+
+        <div class="curve-decoration text-brand-accent">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
+                preserveAspectRatio="none">
+                <path
+                    d="M985.66,92.83C906.67,72,823.78,31,432.84,92.83c-279.24,44.17-380,5.83-432.84,0V120H1200V0C1150.19,25.43,1064.65,113.66,985.66,92.83Z"
+                    class="fill-current"></path>
+            </svg>
+        </div>
+    </header>
+
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div class="p-4">
+                    <div class="text-4xl mb-3">👨‍💼</div>
+                    <h3 class="font-bold text-brand-primary text-lg">שירות אנושי</h3>
+                </div>
+                <div class="p-4">
+                    <div class="text-4xl mb-3">⚡</div>
+                    <h3 class="font-bold text-brand-primary text-lg">מהירות</h3>
+                </div>
+                <div class="p-4">
+                    <div class="text-4xl mb-3">🏷️</div>
+                    <h3 class="font-bold text-brand-primary text-lg">מחיר הוגן</h3>
+                </div>
+                <div class="p-4">
+                    <div class="text-4xl mb-3">🏆</div>
+                    <h3 class="font-bold text-brand-primary text-lg">ניסיון</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="lead-form" class="py-20 bg-brand-muted relative">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <div class="bg-white rounded-3xl shadow-xl p-8 md:p-12">
+                <div class="text-center mb-10">
+                    <h2 class="text-3xl font-bold text-brand-primary mb-2">קבלו הצעה משתלמת</h2>
+                    <p class="text-gray-500">מלאו פרטים ונחזור אליכם עם ההצעה הטובה ביותר</p>
+                </div>
+
+                <form class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-bold text-brand-primary mb-2">שם מלא</label>
+                            <input type="text"
+                                class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:border-brand-accent focus:ring-1 focus:ring-brand-accent outline-none transition"
+                                placeholder="ישראל ישראלי">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-brand-primary mb-2">טלפון</label>
+                            <input type="tel"
+                                class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:border-brand-accent focus:ring-1 focus:ring-brand-accent outline-none transition"
+                                placeholder="050-0000000">
+                        </div>
+                    </div>
+
+                    <div id="dynamic-fields" class="bg-gray-50 p-6 rounded-xl border border-gray-100">
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <div>
+                                <label class="block text-sm font-bold text-gray-700 mb-2">סוג רכב</label>
+                                <select class="w-full px-4 py-2 rounded-lg border border-gray-300">
+                                    <option>פרטי</option>
+                                    <option>מסחרי</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-bold text-gray-700 mb-2">סוג ביטוח</label>
+                                <select class="w-full px-4 py-2 rounded-lg border border-gray-300">
+                                    <option>מקיף + חובה</option>
+                                    <option>צד ג׳ + חובה</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-bold text-gray-700 mb-2">שנת ייצור</label>
+                                <select class="w-full px-4 py-2 rounded-lg border border-gray-300">
+                                    <option>2025</option>
+                                    <option>2024</option>
+                                    <option>2023</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-3 mt-4">
+                        <input type="checkbox" id="consent"
+                            class="w-5 h-5 text-brand-accent rounded border-gray-300 focus:ring-brand-accent">
+                        <label for="consent" class="text-sm text-gray-500">אני מאשר/ת את <a href="#"
+                                class="underline">תנאי השימוש ומדיניות הפרטיות</a></label>
+                    </div>
+
+                    <button type="button"
+                        class="w-full bg-brand-primary text-white text-xl font-bold py-4 rounded-xl hover:bg-black transition shadow-lg mt-6">
+                        שלחו וקבלו הצעה בהקדם
+                    </button>
+                    <p class="text-center text-xs text-gray-400 mt-3">ללא התחייבות • הפרטים נשמרים בפרטיות מלאה</p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-brand-primary text-white py-12 border-t-4 border-brand-accent">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-2xl font-black mb-6">
+                <img src="./lubit-logo-white.svg" alt="Lubit Logo" class="w-30 h-14 object-contain place-self-center">
+            </h2>
+            <div class="flex justify-center gap-8 mb-8 text-gray-400">
+                <a href="#" class="hover:text-white transition">ביטוח רכב</a>
+                <a href="#" class="hover:text-white transition">ביטוח דירה</a>
+                <a href="#" class="hover:text-white transition">ביטוח נסיעות</a>
+            </div>
+            <p class="text-gray-500 text-sm">© כל הזכויות שמורות ללוביט ביטוח 2025</p>
+        </div>
+    </footer>
+
+    <script>
+        const content = {
+            auto: {
+                title: 'ביטוח רכב הוגן ומהיר <br/> <span class="text-brand-accent">עם שירות אנושי</span>',
+                subtitle: 'קבלו הצעה אישית, בלי אותיות קטנות ובלי כאבי ראש.',
+                fields: '<div class="grid grid-cols-1 md:grid-cols-3 gap-6"><div><label class="block text-sm font-bold text-gray-700 mb-2">סוג רכב</label><select class="w-full px-4 py-2 rounded-lg border border-gray-300"><option>פרטי</option><option>מסחרי</option></select></div><div><label class="block text-sm font-bold text-gray-700 mb-2">סוג ביטוח</label><select class="w-full px-4 py-2 rounded-lg border border-gray-300"><option>מקיף + חובה</option><option>צד ג׳ + חובה</option></select></div><div><label class="block text-sm font-bold text-gray-700 mb-2">שנת ייצור</label><select class="w-full px-4 py-2 rounded-lg border border-gray-300"><option>2025</option><option>2024</option><option>2023</option></select></div></div>'
+            },
+            home: {
+                title: 'ביטוח דירה שמכסה באמת <br/> <span class="text-brand-accent">במחיר הוגן</span>',
+                subtitle: 'הגנה מושלמת למבנה ולתכולה, כדי שתוכלו לישון בשקט.',
+                fields: '<div class="grid grid-cols-1 md:grid-cols-2 gap-6"><div><label class="block text-sm font-bold text-gray-700 mb-2">סוג נכס</label><select class="w-full px-4 py-2 rounded-lg border border-gray-300"><option>דירה בבניין</option><option>בית פרטי</option></select></div><div><label class="block text-sm font-bold text-gray-700 mb-2">כיסוי מבוקש</label><select class="w-full px-4 py-2 rounded-lg border border-gray-300"><option>מבנה ותכולה</option><option>מבנה בלבד</option><option>תכולה בלבד</option></select></div><div><label class="block text-sm font-bold text-gray-700 mb-2">שטח הנכס (מ"ר)</label><input type="number" class="w-full px-4 py-2 rounded-lg border border-gray-300" placeholder="הזינו שטח"></div></div>'
+            },
+            atv: {
+                title: 'ביטוח טרקטורונים ושטח <br/> <span class="text-brand-accent">כיסוי מותאם לרוכבים</span>',
+                subtitle: 'כיסוי מקצועי לכלים שלכם, גם בשטח וגם בדרכים.',
+                fields: '<div class="grid grid-cols-1 md:grid-cols-3 gap-6"><div><label class="block text-sm font-bold text-gray-700 mb-2">נפח מנוע</label><select class="w-full px-4 py-2 rounded-lg border border-gray-300"><option>עד 500 סמ"ק</option><option>מעל 500 סמ"ק</option></select></div><div><label class="block text-sm font-bold text-gray-700 mb-2">אופי שימוש</label><select class="w-full px-4 py-2 rounded-lg border border-gray-300"><option>פנאי</option><option>עבודה</option><option>חקלאי</option></select></div><div><label class="block text-sm font-bold text-gray-700 mb-2">כיסוי</label><select class="w-full px-4 py-2 rounded-lg border border-gray-300"><option>מורחב</option><option>בסיסי</option></select></div></div>'
+            },
+            travel: {
+                title: 'ביטוח נסיעות לחו"ל <br/> <span class="text-brand-accent">שקט נפשי מכל מקום</span>',
+                subtitle: 'טסים בראש שקט עם הכיסוי המקיף ביותר.',
+                fields: '<div class="grid grid-cols-1 md:grid-cols-3 gap-6"><div><label class="block text-sm font-bold text-gray-700 mb-2">יעד הנסיעה</label><input type="text" class="w-full px-4 py-2 rounded-lg border border-gray-300" placeholder="לאן טסים?"></div><div><label class="block text-sm font-bold text-gray-700 mb-2">תאריך יציאה</label><input type="date" class="w-full px-4 py-2 rounded-lg border border-gray-300"></div><div><label class="block text-sm font-bold text-gray-700 mb-2">תאריך חזרה</label><input type="date" class="w-full px-4 py-2 rounded-lg border border-gray-300"></div><div class="md:col-span-3"><label class="block text-sm font-bold text-gray-700 mb-3">תוספים</label><div class="flex flex-wrap gap-6"><label class="flex items-center gap-2"><input type="checkbox" class="w-4 h-4 text-brand-accent rounded border-gray-300"> <span class="text-gray-700">סקי</span></label><label class="flex items-center gap-2"><input type="checkbox" class="w-4 h-4 text-brand-accent rounded border-gray-300"> <span class="text-gray-700">אתגרי</span></label><label class="flex items-center gap-2"><input type="checkbox" class="w-4 h-4 text-brand-accent rounded border-gray-300"> <span class="text-gray-700">השכרת רכב</span></label><label class="flex items-center gap-2"><input type="checkbox" class="w-4 h-4 text-brand-accent rounded border-gray-300"> <span class="text-gray-700">ביטול נסיעה</span></label></div></div></div>'
+            }
+        };
+
+        function switchProduct(product) {
+            // Update Text
+            document.getElementById('hero-title').innerHTML = content[product].title;
+            document.getElementById('hero-subtitle').innerText = content[product].subtitle;
+            document.getElementById('dynamic-fields').innerHTML = content[product].fields;
+
+            // Update Image Placeholder Text
+            document.getElementById('hero-img').src = `./${product}.png`;
+
+            // Update Tabs Styling
+            ['auto', 'home', 'atv', 'travel'].forEach(p => {
+                const tab = document.getElementById(`tab-${p}`);
+                if (p === product) {
+                    tab.classList.remove('tab-inactive');
+                    tab.classList.add('tab-active');
+                } else {
+                    tab.classList.remove('tab-active');
+                    tab.classList.add('tab-inactive');
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
